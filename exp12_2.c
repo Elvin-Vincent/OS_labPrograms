@@ -9,7 +9,7 @@ int main()
     printf("Enter the total number of frames in memory: ");
     scanf("%d", &nf);
 
-    int p[np], f[nf], distance[nf];
+    int p[np], f[nf];
     printf("Enter reference string:\n");
     for(i= 0; i< np; i++)
         scanf("%d", &p[i]);
@@ -23,23 +23,23 @@ int main()
     {
         for(j= 0; j< nf; j++)
         {
-            if(p[i] == f[j])      // Hit 
+            if(p[i] == f[j])   // Hit 
                 break;
         }        
         
-        if(j == nf)
+        if(j == nf)   // Miss
         {
             pagefault++;
 
-            if(f_count< nf) // Miss with vaccant frames
+            if(f_count< nf) // With vaccant frames
             {
                 f[f_count]= p[i];
                 f_count++;
             }
 
-            else           // miss without vaccant frames
+            else           // Without vaccant frames
             {
-                int maxdist= 0, index;
+                int maxdist= 0, index, distance[nf];
                 for(j= 0; j< nf; j++)
                 {
                     distance[j]= 0;
