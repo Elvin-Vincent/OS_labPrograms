@@ -23,24 +23,21 @@ int main()
     {
         for(j= 0; j< nf; j++)
         {
-            // This is the Hit condition
-            if(p[i] == f[j])
+            if(p[i] == f[j])   // Hit
                 break;
         }        
-        // suppose if we donot find a hit condition after looping the frame array completely
-        // it means that this is a Miss condition
-        // so we have to increase the pagefault and store the page number to the frames array
-        if(j == nf)
+        
+        if(j == nf)   // Miss
         {
             pagefault++;
+
             f[f_count]= p[i];
             f_count= (f_count+ 1)% nf;
         }
-        // printing frames
+       
         for(j= 0; j< nf; j++)
             printf("%d\t", f[j]);
         printf("\n");
     }
     printf("Total page faults = %d", pagefault);
-    return 0;
 }
