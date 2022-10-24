@@ -9,63 +9,59 @@ int main()
     printf("Enter the total number of frames in memory: ");
     scanf("%d", &nf);
 
-    int p[np], f[nf];
+    int p[np], f[nf], distance[nf];
     printf("Enter reference string:\n");
     for(i= 0; i< np; i++)
         scanf("%d", &p[i]);
 
     // initially all the frames are empty
-    for(i= 0; i< nf; i++)
-        f[i]= -1;
+    for(j= 0; j< nf; j++)
+        f[j]= -1;
     
-    printf("Frame 1\tFrame 2\tFrame 3\n");
+    printf("Frame 1\tFrame 2\tFrame 3\tFrame 4\n");
     for(i= 0; i< np; i++)
     {
         for(j= 0; j< nf; j++)
         {
-            // This is the Hit condition
-            if(p[i] == f[j])
+            if(p[i] == f[j])      // Hit 
                 break;
         }        
-        // suppose if we donot find a hit condition after looping the frame array completely
-        // it means that this is a Miss condition
-        // so we have to increase the pagefault and store the page number to the frames array
+        
         if(j == nf)
         {
             pagefault++;
-            if(f_count< nf) // represents the initial cases till all the frames are full
+
+            if(f_count< nf) // Miss with vaccant frames
             {
                 f[f_count]= p[i];
                 f_count++;
             }
-            else
+
+            else           // miss without vaccant frames
             {
+                int maxdist= 0, index;
                 for(j= 0; j< nf; j++)
                 {
-                    if(p[i- nf])
-                    if(p[i- nf] == f[j]) 
+                    distance[j]= 0;
+                    for(k= i- 1; k>= 0; k--)
                     {
-                        f[j]= p[i];
-                        break;
-                    }   
+                        distance[j]++;
+                        if(f[j] == p[k])
+                            break;
+                    }
+                    if(distance[j]> maxdist)
+                    {
+                        maxdist= distance[j];
+                        index= j;
+                    }
                 }
+                f[index]= p[i];
             }
         }
-        // printing frames
+
         for(j= 0; j< nf; j++)
             printf("%d\t", f[j]);
         printf("\n");
     }
     printf("Total page faults = %d", pagefault);
-    return 0;
 }
-
-            // else
-            // {
-            //     for(k= 0; k< i; k++)
-            //     {
-            //         if(p[i- nf] == f[k])
-            //         break;
-            //     }
-            //     f[k]= p[i];
-            // }
