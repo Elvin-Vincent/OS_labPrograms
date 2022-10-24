@@ -32,10 +32,7 @@ int main()
             pagefault++;
 
             if(f_count< nf) // With vaccant frames
-            {
-                f[f_count]= p[i];
-                f_count++;
-            }
+                f[f_count++]= p[i];
 
             else           // Without vaccant frames
             {
