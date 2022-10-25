@@ -22,6 +22,6 @@ int main()
         totheadmov += abs(rq[i]- inihead);
         inihead= rq[i];
     }
-    printf("Total head movement = %d", totheadmov);
+    printf("Total head movement = %d\n", totheadmov);
     return 0;
 }
