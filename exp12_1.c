@@ -37,5 +37,5 @@ int main()
             printf("%d\t", f[j]);
         printf("\n");
     }
-    printf("Total page faults = %d", pagefault);
+    printf("Total page faults = %d\n", pagefault);
 }
