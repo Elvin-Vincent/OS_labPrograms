@@ -3,7 +3,7 @@
 #include<stdio.h>
 int main()
 {
-    int np, nf, i, j, k, pagefault= 0, f_count= 0;
+    int np, nf, i, j, pagefault= 0, f_count= 0;
     printf("Enter the no. of pages requested by the CPU: ");
     scanf("%d", &np);
     printf("Enter the total number of frames in memory: ");
@@ -36,7 +36,7 @@ int main()
 
             else           // Without vaccant frames
             {
-                int maxdist= 0, index, distance[nf];
+                int k, maxdist= 0, index, distance[nf];
                 for(j= 0; j< nf; j++)
                 {
                     distance[j]= 0;
