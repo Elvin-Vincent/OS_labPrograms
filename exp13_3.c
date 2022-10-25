@@ -5,21 +5,21 @@
 
 int main()
 {
-    int inihead, n, totheadmom= 0, i, totsize, dir, j, temp, index;
-    printf("Enter the no. of Requests: ");
+    int inihead, n, totheadmov= 0, i, totsize, dir, j, temp, index;
+    printf("No. of Requests: ");
     scanf("%d", &n);
     
     int rq[n];
-    printf("Enter the Request sequence:\n");
+    printf("Request sequence:\n");
     for(i= 0; i< n; i++)
         scanf("%d", &rq[i]);
 
-    printf("Enter the initial head position: ");
+    printf("Initial head position: ");
     scanf("%d", &inihead);
 
-    printf("Enter total disk size: ");
+    printf("Total disk size: ");
     scanf("%d", &totsize);
-    printf("Enter the head movement direction (1:high & 0:low) : ");
+    printf("Head movement direction (1:high & 0:low) : ");
     scanf("%d", &dir);
 
     for(i= 0; i< n; i++)
@@ -51,19 +51,19 @@ int main()
     {
         for(i= index; i< n; i++)
         {
-            totheadmom += abs(rq[i]- inihead);
+            totheadmov += abs(rq[i]- inihead);
             inihead= rq[i]; 
         }
         // rightmost end
-        totheadmom += abs((totsize- 1)- inihead);
+        totheadmov += abs((totsize- 1)- inihead);
         inihead= totsize- 1;
         // jumping to leftmost end
-        totheadmom += abs(0- inihead);
+        totheadmov += abs(0- inihead);
         inihead= 0;
         // continuing the same pattern
         for(i= 0; i< index; i++)
         {
-            totheadmom += abs(rq[i]- inihead);
+            totheadmov += abs(rq[i]- inihead);
             inihead= rq[i];
         }
     }
@@ -72,22 +72,22 @@ int main()
     {
         for(i= index- 1; i>= 0; i--)
         {
-            totheadmom += abs(rq[i]- inihead);
+            totheadmov += abs(rq[i]- inihead);
             inihead= rq[i]; 
         }
         // leftmost end
-        totheadmom += abs(0- inihead);
+        totheadmov += abs(0- inihead);
         inihead= 0;
         // jumping to rightmost end
-        totheadmom += abs((totsize- 1)- inihead);
+        totheadmov += abs((totsize- 1)- inihead);
         inihead= totsize- 1;
         // continuing the same pattern
         for(i= totsize- 1; i>= index; i--)
         {
-            totheadmom += abs(rq[i]- inihead);
+            totheadmov += abs(rq[i]- inihead);
             inihead= rq[i];
         }
     }
-    printf("Total head moment = %d", totheadmom);
+    printf("Total head movement = %d", totheadmov);
     return 0;
 }
