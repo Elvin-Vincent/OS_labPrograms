@@ -22,10 +22,8 @@ int main()
     for(i= 0; i< np; i++)
     {
         for(j= 0; j< nf; j++)
-        {
             if(p[i] == f[j])   // Hit
-                break;
-        }        
+                break;       
         
         if(j == nf)   // Miss
         {
