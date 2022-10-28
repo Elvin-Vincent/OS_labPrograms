@@ -62,5 +62,4 @@ int main()
         }
     }
     printf("\nNumber of page faults is %d\n", count);
-    return 0;
 }
